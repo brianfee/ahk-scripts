@@ -60,12 +60,12 @@ launch_keys := False
 #+h:: SendInput, #{Left}
 #+j:: SendInput, #{Down}
 #+k:: SendInput, #{Up}
-#+l:: SendInput, #{Right} ; Requires Registry Edit
+#+l:: SendInput, #{Right}
 
 
 
 ; ---------- Launcher Keybindings ----------
-#Enter:: Run, powershell.exe
+#Enter:: Run, C:\apps\cmder\cmder.exe /start "%USERPROFILE%"
 #+Enter:: Run, firefox.exe --private-window
 #=:: Run, calc.exe
 
@@ -99,7 +99,6 @@ launch_keys := False
 		Return
 	
 #IF
-
 
 
 
