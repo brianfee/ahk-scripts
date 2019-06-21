@@ -19,6 +19,11 @@ SetWorkingDir %A_ScriptDir%
 
 ; ---------- Calculate today +/- specified number of days ----------
 date_diff(time=5,diff:=0) {
+	SplashTextOn,,, DateDiff
+	WinMove, DateDiff,,16,16
+	Input, diff, B T%time%, {Esc}%exitKeys%
+	SplashTextOff
+
 	exitKeys = 
 	(
 		0123456789
@@ -36,20 +41,13 @@ date_diff(time=5,diff:=0) {
 
 	date := A_Now
 
-	SplashTextOn,,, DateDiff
-	WinMove, DateDiff,,16,16
-	Input, diff, B T%time%, {Esc}%exitKeys%
-	SplashTextOff
-
 	If ((ErrorLevel = "Timeout") || InStr(ErrorLevel, "EndKey:Esc")) {
 		Return
 	}
 
-	If ((InStr(ErrorLevel, "EndKey:")) && (! InStr(ErrorLevel, "EndKey:Esc"))) {
-		msgbox % errorlevel
+	If (InStr(ErrorLevel, "EndKey:")) {
 		diff := diff . SubStr(ErrorLevel, 8)
 		diff := RegExReplace(diff, "Numpad","")
-		msgbox % diff
 	}
 
 
