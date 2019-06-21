@@ -45,7 +45,6 @@ RShift & LShift:: Capslock
 ::!psa::Please see attached.
 
 
-
 ; ---------- Flags ----------
 date_keys := False
 launch_keys := False
@@ -113,6 +112,10 @@ launch_keys := False
 	date_keys := !date_keys
 	sleep, 1000
 	date_keys := False
+	return
+
+^#d::
+	SendInput % date_diff()
 	return
 
 

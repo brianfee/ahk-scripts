@@ -32,6 +32,57 @@ add_days(diff:=0) {
 	return result
 }
 
+date_diff(time=5,diff:=0) {
+	exitKeys = 
+	(
+		0123456789
+		{Numpad0}
+		{Numpad1}
+		{Numpad2}
+		{Numpad3}
+		{Numpad4}
+		{Numpad5}
+		{Numpad6}
+		{Numpad7}
+		{Numpad8}
+		{Numpad9}
+	)
+
+	date := A_Now
+
+	SplashTextOn,,, DateDiff
+	WinMove, DateDiff,,16,16
+	Input, diff, B T%time%, {Esc}%exitKeys%
+	SplashTextOff
+
+	If ((ErrorLevel = "Timeout") || InStr(ErrorLevel, "EndKey:Esc")) {
+		Return
+	}
+
+	If ((InStr(ErrorLevel, "EndKey:")) && (! InStr(ErrorLevel, "EndKey:Esc"))) {
+		msgbox % errorlevel
+		diff := diff . SubStr(ErrorLevel, 8)
+		diff := RegExReplace(diff, "Numpad","")
+		msgbox % diff
+	}
+
+
+	addsub := SubStr(diff, 1, 1)
+
+	If ((addsub = "+") || (addsub = "-")) {
+		diff := SubStr(diff, 2)
+	}
+
+	If (addsub = "-") {
+		date += (0 - diff), days
+	} Else {
+		date += diff, days
+	}
+
+	FormatTime result, %date%, MM-dd-yyyy
+	Return result
+}
+
 
 ; ---------- Quick Calculator ----------
 ; Takes mathematical expressions and outputs result
@@ -51,7 +102,6 @@ quick_calculator(time=60,view=False) {
 
 	Random, f
 	f = %cd%\%f%.ahk
-
 	FileAppend #NoTrayIcon`nFileDelete %f%`nFileAppend `% %mathExpr%`, %f%, %f%
 	RunWait %A_AhkPath% %f%
 	FileRead answer, %f%
