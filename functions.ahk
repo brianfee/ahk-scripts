@@ -18,20 +18,6 @@ SetWorkingDir %A_ScriptDir%
 
 
 ; ---------- Calculate today +/- specified number of days ----------
-subtract_days(diff:=0) {
-	date := A_Now
-	date += (0 - diff), days
-	FormatTime result, %date%, MM-dd-yyyy
-	return result
-}
-
-add_days(diff:=0) {
-	date := A_Now
-	date += diff, days
-	FormatTime result, %date%, MM-dd-yyyy
-	return result
-}
-
 date_diff(time=5,diff:=0) {
 	exitKeys = 
 	(

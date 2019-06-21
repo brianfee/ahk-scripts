@@ -46,7 +46,6 @@ RShift & LShift:: Capslock
 
 
 ; ---------- Flags ----------
-date_keys := False
 launch_keys := False
 
 
@@ -109,144 +108,8 @@ launch_keys := False
 
 ; Date Menu: Win + d -> number of days difference
 #d::
-	date_keys := !date_keys
-	sleep, 1000
-	date_keys := False
-	return
-
-^#d::
 	SendInput % date_diff()
 	return
-
-
-#IF (date_keys)
-
-; ----- Subtract days -----
-	d:: 
-	0::
-	Numpad0::
-		SendInput % subtract_days()
-		date_keys := False
-		Return
-
-	1::
-	Numpad1::
-		SendInput % subtract_days(1)
-		date_keys := False
-		Return
-
-	2::
-	Numpad2::
-		SendInput % subtract_days(2)
-		date_keys := False
-		Return
-
-	3::
-	Numpad3::
-		SendInput % subtract_days(3)
-		date_keys := False
-		Return
-
-	4::
-	Numpad4::
-		SendInput % subtract_days(4)
-		date_keys := False
-		Return
-
-	5::
-	Numpad5::
-		SendInput % subtract_days(5)
-		date_keys := False
-		Return
-
-	6::
-	Numpad6::
-		SendInput % subtract_days(6)
-		date_keys := False
-		Return
-
-	7::
-	Numpad7::
-		SendInput % subtract_days(7)
-		date_keys := False
-		Return
-
-	8::
-	Numpad8::
-		SendInput % subtract_days(8)
-		date_keys := False
-		Return
-
-	9::
-	Numpad9::
-		SendInput % subtract_days(9)
-		date_keys := False
-		Return
-
-
-	; ----- Add days -----
-	#0::
-	#Numpad0::
-		Send % add_days()
-		date_keys := False
-		Return
-
-	#1::
-	#Numpad1::
-		SendInput % add_days(1)
-		date_keys := False
-		Return
-
-	#2::
-	#Numpad2::
-		SendInput % add_days(2)
-		date_keys := False
-		Return
-
-	#3::
-	#Numpad3::
-		SendInput % add_days(3)
-		date_keys := False
-		Return
-
-	#4::
-	#Numpad4::
-		SendInput % add_days(4)
-		date_keys := False
-		Return
-
-	#5::
-	#Numpad5::
-		SendInput % add_days(5)
-		date_keys := False
-		Return
-
-	#6::
-	#Numpad6::
-		SendInput % add_days(6)
-		date_keys := False
-		Return
-
-	#7::
-	#Numpad7::
-		SendInput % add_days(7)
-		date_keys := False
-		Return
-
-	+8::
-	NumpadUp::
-		SendInput % add_days(8)
-		date_keys := False
-		Return
-
-	+9::
-	NumpadPgUp::
-		SendInput % add_days(9)
-		date_keys := False
-		Return
-
-
-#IF
 
 
 
