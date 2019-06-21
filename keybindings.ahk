@@ -106,6 +106,7 @@ launch_keys := False
 ; ---------- Misc Keybindings ----------
 
 #=:: quick_calculator()
+^#=:: quick_calculator(,True)
 
 ; Date Menu: Win + d -> number of days difference
 #d::

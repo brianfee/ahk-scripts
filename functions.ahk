@@ -35,12 +35,15 @@ add_days(diff:=0) {
 
 ; ---------- Quick Calculator ----------
 ; Takes mathematical expressions and outputs result
-quick_calculator(time=10) {
-	SplashTextOn,,, Quick Calculator
-	Input, mathExpr, B T%time% V, {Esc}{Enter}
-	SplashTextOff
+quick_calculator(time=60,view=False) {
+	; View dependent variables
+	v := view ? "V" : ""
+	splashText := view ? "Quick Calculator - Visible" : "Quick Calculator"
 
-	exprLen := StrLen(mathExpr) + 1
+	SplashTextOn,,, %splashText%
+	WinMove, %splashText%,,16,16
+	Input, mathExpr, B T%time% %v%, {Esc}{Enter}
+	SplashTextOff
 
 	If ((ErrorLevel = "Timeout") || InStr(ErrorLevel, "EndKey:Esc")) {
 		Return
@@ -54,7 +57,12 @@ quick_calculator(time=10) {
 	FileRead answer, %f%
 	FileDelete % f
 
-	SendInput, {Backspace %exprLen%}%answer%
+	if (view) {
+		exprLen := StrLen(mathExpr) + 1
+		SendInput, {Backspace %exprLen%}
+	}
+
+	SendInput % answer
 	Return
 }
 
