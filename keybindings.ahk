@@ -66,7 +66,7 @@ launch_keys := False
 ; ---------- Launcher Keybindings ----------
 #Enter:: Run, C:\apps\cmder\cmder.exe /start "%USERPROFILE%"
 +#Enter:: Run, firefox.exe --private-window
-+#=:: Run, calc.exe
+#=:: Run, calc.exe
 
 ; Launcher Menu: Win + o -> additional keybindings 
 #o::
@@ -103,8 +103,8 @@ launch_keys := False
 
 ; ---------- Misc Keybindings ----------
 
-#=:: quick_calculator()
-^#=:: quick_calculator(,True)
+#c:: quick_calculator()
+^#c:: quick_calculator(,True)
 
 ; Date Menu: Win + d -> number of days difference
 #d::

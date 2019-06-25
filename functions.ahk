@@ -16,7 +16,6 @@ SetWorkingDir %A_ScriptDir%
 #Include %A_ScriptDir%
 
 
-
 ; ---------- Calculate today +/- specified number of days ----------
 date_diff(time=5,diff:=0) {
 	exitKeys = 
@@ -66,6 +65,7 @@ date_diff(time=5,diff:=0) {
 	FormatTime result, %date%, MM-dd-yyyy
 	Return result
 }
+
 
 
 ; ---------- Quick Calculator ----------
