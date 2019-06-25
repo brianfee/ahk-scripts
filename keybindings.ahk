@@ -47,6 +47,7 @@ RShift & LShift:: Capslock
 
 ; ---------- Flags ----------
 launch_keys := False
+letterpad := False
 
 
 
@@ -76,7 +77,7 @@ launch_keys := False
 	return
 
 #IF (launch_keys)
-	
+
 	c::
 		Run, chrome.exe
 		launch_keys := False
@@ -91,12 +92,12 @@ launch_keys := False
 		Run, firefox.exe
 		launch_keys := False
 		Return
-	
+
 	+f::
 		Run, firefox.exe --private-window
 		launch_keys := False
 		Return
-	
+
 #IF
 
 
@@ -110,6 +111,56 @@ launch_keys := False
 #d::
 	SendInput % date_diff()
 	return
+
+; Home Row Numbers
+#n::
+	SplashTextOn,,, Letterpad
+	WinMove, Letterpad,,16,16
+	letterpad := !letterpad
+	sleep, 10000
+	letterpad := False
+	SplashTextOff
+	return
+
+#IF (letterpad)
+
+	Esc::
+		letterpad := False
+		SplashTextOff
+		Return
+	a::
+		SendInput, 1
+		Return
+	s::
+		SendInput, 2
+		Return
+	d::
+		SendInput, 3
+		Return
+	f::
+		SendInput, 4
+		Return
+	g::
+		SendInput, 5
+		Return
+	h::
+		SendInput, 6
+		Return
+	j::
+		SendInput, 7
+		Return
+	k::
+		SendInput, 8
+		Return
+	l::
+		SendInput, 9
+		Return
+	SC027::
+		SendInput, 0
+		Return
+
+#IF
+	
 
 
 

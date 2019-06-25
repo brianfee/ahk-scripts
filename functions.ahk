@@ -20,7 +20,7 @@ SetWorkingDir %A_ScriptDir%
 date_diff(time=5,diff:=0) {
 	exitKeys = 
 	(
-		0123456789
+		d0123456789
 		{Numpad0}
 		{Numpad1}
 		{Numpad2}
