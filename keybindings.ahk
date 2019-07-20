@@ -31,6 +31,7 @@ SplashTextOff
 ; ---------- Includes ----------
 #Include %A_ScriptDir%
 #Include functions.ahk
+#Include kb_excel.ahk
 
 
 
