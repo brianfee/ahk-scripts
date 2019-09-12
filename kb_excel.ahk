@@ -19,7 +19,7 @@ SetWorkingDir %A_ScriptDir%
 
 #IfWinActive ahk_class XLMAIN
 	; ---------- Add Filter on highlighted cells ----------
-	^#f:: SendInput, !hsf
+	^#f:: SendInput, !hs1f
 
 	; ---------- Save As and Close Shortcuts ----------
 	^#1::
