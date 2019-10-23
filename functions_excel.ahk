@@ -16,7 +16,7 @@ SetWorkingDir %A_ScriptDir%
 #Include functions.ahk
 
 
-excelSaveAs(name, location:=0) {
+excelSaveAs(name, location:=0, closeAfterSave:=0) {
 	; This function takes a file name and saves the current workbook.
 
 	; Set location to desktop if arg not entered
@@ -27,14 +27,14 @@ excelSaveAs(name, location:=0) {
 
 	; Save at location\filename
 	sendInput, {F12}
-	WinWaitActive, Save As,, 2
+	WinWaitActive, Save As,, 3
 	if ErrorLevel
 	{
-		MsgBox,, Save As window never appeared, 2
+		MsgBox,, Error, Save As window never appeared, 2
 		Exit
 	}
 
-	sleep % 100
+	sleep % 500
 	sendInput, %name%
 	sendInput, !d
 	sleep % 100
@@ -49,6 +49,18 @@ excelSaveAs(name, location:=0) {
 		ControlFocus,.*Yes$, ^Confirm Save As$
 		sendInput, {Enter}
 		sleep % 100
+	}
+
+	; Close file if requested
+	if closeAfterSave = 1
+	{
+		WinWaitActive, %name%,, 5
+		if ErrorLevel
+		{
+			MsgBox,, Error, Excel File did not reactivate., 1
+			Exit
+		}
+		sendInput, !{F4}
 	}
 
 	Return
