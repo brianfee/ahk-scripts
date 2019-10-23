@@ -23,46 +23,18 @@ SetWorkingDir %A_ScriptDir%
 
 	; ---------- Save As and Close Shortcuts ----------
 	^#1::
-		fileName = borrower.xlsx
-		excelSaveAs(fileName)
-		WinWaitActive, .*- Saved,, 5
-		if ErrorLevel {
-			MsgBox,, Error, Excel File did not reactivate., 1
-			Exit
-		}
-		sendInput, !{F4}
+		excelSaveAs("borrower.xlsx",, 1)
 	Return
 
 	^#2::
-		fileName = commissions.xlsx
-		excelSaveAs(fileName)
-		WinWaitActive, .*- Saved,, 5
-		if ErrorLevel {
-			MsgBox,, Error, Excel File did not reactivate., 1
-			Exit
-		}
-		sendInput, !{F4}
+		excelSaveAs("commissions.xlsx",, 1)
 	Return
 
 	^#3::
-		fileName = purchase.xlsx
-		excelSaveAs(fileName)
-		WinWaitActive, .*- Saved,, 5
-		if ErrorLevel {
-			MsgBox,, Error, Excel File did not reactivate., 1
-			Exit
-		}
-		sendInput, !{F4}
+		excelSaveAs("purchase.xlsx",, 1)
 	Return
 
 	^#4::
-		fileName = fund.xlsx
-		excelSaveAs(fileName)
-		WinWaitActive, .*- Saved,, 5
-		if ErrorLevel {
-			MsgBox,, Error, Excel File did not reactivate., 1
-			Exit
-		}
-		sendInput, !{F4}
+		excelSaveAs("fund.xlsx",, 1)
 	Return
 #IfWinActive
