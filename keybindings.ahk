@@ -105,6 +105,17 @@ letterpad := False
 
 ; ---------- Misc Keybindings ----------
 
+#MaxThreadsPerHotkey 2
+#^LButton::
+	click_toggle := !click_toggle
+	while click_toggle
+	{
+		Click, 1
+		Sleep, 10
+	}
+	return
+#MaxThreadsPerHotkey 1
+
 #c:: quick_calculator()
 ^#c:: quick_calculator(,True)
 
