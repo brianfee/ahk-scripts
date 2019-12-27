@@ -129,9 +129,6 @@ letterpad := False
 	SplashTextOn,,, Letterpad
 	WinMove, Letterpad,,16,16
 	letterpad := !letterpad
-	sleep, 10000
-	letterpad := False
-	SplashTextOff
 	return
 
 #IF (letterpad)
